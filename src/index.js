@@ -1,17 +1,18 @@
-const express = require("express")
-const book_router = require("./routes/book.js")
-const rental_router = require("./routes/rental.js")
-const student_router = require("./routes/student.js")
-const app = express()
-const port = 5000
+const express = require("express");
+const aluguel_router = require("./routes/aluguel.js");
+const estudante_router = require("./routes/estudante.js");
+const livro_router = require("./routes/livro.js");
 
-app.use(express.json())
+const app = express();
+const port = 5000;
 
-app.use("/student", student_router)
-app.use("/rental", rental_router)
-app.use("/book", book_router)
+app.use(express.json());
 
+
+app.use("/estudante", estudante_router);
+app.use("/livro", livro_router);
+app.use("/aluguel", aluguel_router);
 
 app.listen(port, () => {
-  console.log(`Server running in ${port} port`)
-})
+  console.log(`Server running in ${port} port`);
+});

@@ -1,27 +1,28 @@
 const express = require("express");
-const rental_controller = require("../controllers/rental")
+const estudante_controller = require("../controllers/estudante.js")
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  res.json(rental_controller.indexAlugueis())
+  res.json(estudante_controller.index())
 })
 
 router.get("/:id", (req, res) => {
-  res.json(rental_controller.showAluguel(req.params.id))
+  res.json(estudante_controller.show(req.params.id))
 })
 
 router.post("/", (req, res) => {
-  const code = rental_controller.storeAluguel(req.body)
+  console.log(req);
+  const code = estudante_controller.store(req.body)
   res.status(code).json()
 })
 
 router.put("/:id", (req, res) => {
-  const code = rental_controller.updateAluguel(req.body, req.params.id)
+  const code = estudante_controller.update(req.body, req.params.id)
   res.status(code).json()
 })
 
 router.delete("/:id", (req, res) => {
-  rental_controller.destroy(req.params.id)
+  estudante_controller.destroy(req.params.id)
   res.json()
 })
 
